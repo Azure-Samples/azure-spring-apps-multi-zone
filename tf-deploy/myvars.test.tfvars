@@ -1,19 +1,11 @@
-regions = [{
+region = {
     location = "westeurope"
     location-short = "weu"
     config_server_git_setting = {
       uri          = "https://github.com/spring-petclinic/spring-petclinic-microservices-config.git"
       label        = "master"
     }
-  },
-  {
-    location = "eastus"
-    location-short = "eus"
-    config_server_git_setting = {
-      uri          = "https://github.com/spring-petclinic/spring-petclinic-microservices-config.git"
-      label        = "master"
-    }
-}]
+  }
 
 dns_name = "sampleapp.yourdomain.com"
 

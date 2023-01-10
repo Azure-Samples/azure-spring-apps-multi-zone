@@ -37,7 +37,3 @@ variable "appgw_identity_id" {
 variable "backend_fqdn" {
   type = string
 }
-
-variable "afd_fdid" {
-  type = string
-}

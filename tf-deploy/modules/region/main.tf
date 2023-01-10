@@ -87,7 +87,6 @@ module "appgw" {
   use_self_signed_cert = var.use_self_signed_cert
   appgw_identity_id = module.keyvault.appgw_identity_id
   backend_fqdn = "api-gateway.private.azuremicroservices.io"
-  afd_fdid = var.afd_fdid
   depends_on = [
     module.keyvault
   ]

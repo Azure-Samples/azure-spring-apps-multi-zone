@@ -34,7 +34,7 @@ terraform apply -auto-approve plan.tfplan
 
 ## 5. Test your setup
 
-You can test your setup by going to your app through your Front door hostname in the browser. The hostname is part of the Terraform output. You should see the "Hurray~Your app is up and running!" page. 
+You can test your setup by going to your app through your Application Gateway hostname in the browser. The hostname is part of the Terraform output. You should see the "Hurray~Your app is up and running!" page.
 
 ## 6. Extra: Deploying the Spring Petclinic application
 
@@ -42,7 +42,7 @@ In case you want to deploy the spring petclinic micorservices application to you
 
 ## 7. Cleanup
 
-To remove all the resources you have set up, run the below statement: 
+To remove all the resources you have set up, run the below statement:
 
 ```bash
 terraform destroy -var-file="myvars.test.tfvars"

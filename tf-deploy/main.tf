@@ -32,10 +32,9 @@ resource "random_string" "rand-name" {
 
 module "region" {
   source = "./modules/region"
-  for_each = {for i, r in var.regions:  i => r}
   application_name = local.application_name
-  location = each.value.location
-  location-short = each.value.location-short
+  location = var.region.location
+  location-short = var.region.location-short
 
   dns_name = var.dns_name
   cert_name = var.cert_name
@@ -44,23 +43,7 @@ module "region" {
   cert_password = var.cert_password
 
   config_server_git_setting = each.value.config_server_git_setting
-  git_repo_password = var.git_repo_passwords == null ? "" : var.git_repo_passwords[index(var.regions, each.value)]
+  git_repo_password = var.git_repo_passwords == null ? "" : var.git_repo_password
   apps = var.apps
   environment_variables = var.environment_variables
-  afd_fdid = module.afd.afd_fdid
-}
-
-resource "azurerm_resource_group" "rg" {
-  name = "${local.application_name}-shared"
-  location = var.shared_location
-}
-
-module "afd" {
-  source = "./modules/global_lb"
-  app_name = local.application_name
-  resource_group = azurerm_resource_group.rg.name
-  dns_name = var.dns_name
-  backends = [for i, r in var.regions : module.region[i].appgw_ip]
-  cert_id = module.region[0].cert_id
-  use_self_signed_cert = var.use_self_signed_cert
 }

@@ -4,8 +4,8 @@ variable "application_name" {
   default     = "asa-mr"
 }
 
-variable "regions" {
-  type = list(object({
+variable "region" {
+  type = object({
     location = string
     location-short = string
     config_server_git_setting = object({
@@ -15,8 +15,8 @@ variable "regions" {
         username = string
       }), {username = ""})
     })
-  }))
-  description = "the regions you want the Azure Spring Apps backends to be deployed to."
+  })
+  description = "the region you want the Azure Spring Apps backend to be deployed to."
 }
 
 variable "apps" {
@@ -26,16 +26,17 @@ variable "apps" {
     is_public = bool
     needs_custom_domain = bool
   }))
+  description = "the apps you want to deploy in your spring apps instance"
 }
 
 variable "environment_variables" {
   type = map(string)
 }
 
-variable "git_repo_passwords" {
-  type = list(string)
+variable "git_repo_password" {
+  type = string
   sensitive = true
-  default = null
+  default = ""
 }
 
 variable "dns_name" {

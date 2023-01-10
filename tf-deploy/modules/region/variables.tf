@@ -64,7 +64,3 @@ variable "apps" {
 variable "environment_variables" {
   type = map(string)
 }
-
-variable "afd_fdid" {
-  type = string
-}

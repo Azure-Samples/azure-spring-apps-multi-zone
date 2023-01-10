@@ -8,7 +8,8 @@ resource "azurerm_spring_cloud_service" "asa" {
   }
   sku_name = "S0"
   location = var.location
-  
+  zone_redundant = true
+
   config_server_git_setting {
     uri          = var.config_server_git_setting.uri
     label        = var.config_server_git_setting.label

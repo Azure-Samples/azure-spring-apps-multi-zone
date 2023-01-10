@@ -6,6 +6,7 @@ resource "azurerm_public_ip" "appgw-pip" {
   allocation_method   = "Static"
   sku = "Standard"
   domain_name_label = var.dns_label
+  zones = ["1", "2", "3"]
 }
 
 locals {
@@ -26,6 +27,7 @@ resource "azurerm_application_gateway" "appgwss" {
   name                = "${var.app_name}-gw"
   resource_group_name = var.resource_group
   location            = var.location
+  zones = ["1", "2", "3"]
 
   sku {
     name     = "WAF_v2"
@@ -135,6 +137,7 @@ resource "azurerm_application_gateway" "appgw" {
   name                = "${var.app_name}-gw"
   resource_group_name = var.resource_group
   location            = var.location
+  zones = ["1", "2", "3"]
 
   sku {
     name     = "WAF_v2"
@@ -249,24 +252,5 @@ resource "azurerm_web_application_firewall_policy" "waf_policy" {
       type    = "OWASP"
       version = "3.1"
     }
-  }
-
-  custom_rules {
-    name      = "onlyMyAFD"
-    priority  = 2
-    rule_type = "MatchRule"
-
-    match_conditions {
-      match_variables {
-        variable_name = "RequestHeaders"
-        selector      = "X-Azure-FDID"
-      }
-
-      operator           = "Equal"
-      negation_condition = true
-      match_values       = [var.afd_fdid]
-    }
-
-    action = "Block"
   }
 }
