@@ -1,8 +1,8 @@
-# Azure Spring Apps multi region reference architecture
+# Azure Spring Apps multi zone reference architecture
 
-This sample contains a Terraform template that deploys a working sample of the Azure architecture center reference architecture: [Multi region Azure Spring Apps reference architecture (coming up)](coming up). The reference architecture and sample show how to run an Azure Spring Apps workload in a multi region configuration. This allows for higher availability of the workload as well as global presence for the workload.
+This sample contains a Terraform template that deploys a working sample of the Azure architecture center reference architecture: [Multi zone Azure Spring Apps reference architecture (coming up)](coming up). The reference architecture and sample show how to run an Azure Spring Apps workload in a multi zone configuration. This allows for higher availability of the workload.
 
-![Multi region Spring Apps architecture diagram](./images/multi-region-spring-apps-reference-architecture.png)
+![Multi zone Spring Apps architecture diagram](./images/multi-zone-spring-apps-reference-architecture.png)
 
 This sample also applies a proper reverse proxy configuration with [host name preservation](https://learn.microsoft.com/azure/architecture/best-practices/host-name-preservation). This means that cookies and AAD redirects will be working as expected.
 
@@ -10,8 +10,8 @@ This sample also applies a proper reverse proxy configuration with [host name pr
 
 This project framework provides the following features:
 
-- Multi-region Spring Apps deployment with VNet integration
-- Proper reverse proxy configuration for Application Gateway and Front Door with a custom domain
+- Multi-zone Spring Apps deployment with VNet integration
+- Proper reverse proxy configuration for Application Gateway with a custom domain
 - Integration with Key Vault
 - Integration with a MySQL database
 
@@ -23,13 +23,12 @@ Before you begin, make sure you have the following available:
 
 - Azure Subscription with Contributor access
 - Azure Active Directory access
-- optional: 
-  - pfx certificate for your custom domain 
-  - GitHub Personal Access Token 
+- optional:
+  - pfx certificate for your custom domain
+  - GitHub Personal Access Token
 
 > [NOTE!]
 > There is also an option to install this infrastructure with a self-signed certificate. This certificate will be generated for you during the deployment. However, this setup should only be used in testing scenario's.
-> Since Azure Front Door does not support self-signed certificates a host name override will take place, breaking some of the functionality of your backend applications. For production scenario's you should always apply [host name preservation](https://learn.microsoft.com/azure/architecture/best-practices/host-name-preservation).
 
 To deploy the infrastructure, you can either make use of a locally installed environment, or you can make use of a pre-configured dev container.
 
@@ -38,7 +37,7 @@ When executing locally, make sure you have the following installed:
 - Latest version of [Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli)
 - Latest version of [AZ CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
 
-When using the dev container, either make sure you have [GitHub Codespaces](https://docs.github.com/codespaces/overview) enabled in your GitHub organization (you need at least a GitHub Teams license for this), or you can start up the dev container locally with the [Visual Studio Code Remote Containers](https://code.visualstudio.com/docs/remote/containers) extension.
+When using the dev container, either make sure you have [GitHub Codespaces](https://docs.github.com/codespaces/overview) enabled in your GitHub organization, or you can start up the dev container locally with the [Visual Studio Code Remote Containers](https://code.visualstudio.com/docs/remote/containers) extension.
 
 ### Installation
 
@@ -57,11 +56,10 @@ We are working on improving this sample. The ideas we have on improving:
 
 - Create Bicep templates for the same setup (in progress)
 - Make the database interchangeable for other types of databases (Cosmos DB as a first candidate)
-- Make the application backend interchangeable. This multi-region setup with reverse proxies does not only apply to Azure Spring Apps, but also to other Azure PaaS services, like Azure App Service, Azure Kubernetes Service, ...
 - Currently the apps in Azure Spring Apps are based on the Spring Petclinic sample, these apps should be better configurable.
-- Include multi-zone support for Azure Spring Apps.
 
 ## Resources
 
 - [Azure Architecture Center: Multi-region Azure Spring Apps reference architecture(coming up)](article coming up)
 - [Preserve the original HTTP host name between a reverse proxy and its back-end web application](https://learn.microsoft.com/azure/architecture/best-practices/host-name-preservation)
+- A similar automated setup in multiple regions can be found in the [Azure Spring Apps multi region reference architecture](https://github.com/vermegi/azure-spring-apps-multi-region) GitHub repository with more info in the [Deploy Azure Spring Apps to multiple regions](https://learn.microsoft.com/azure/architecture/reference-architectures/microservices/spring-apps-multi-region) architecture center article.
