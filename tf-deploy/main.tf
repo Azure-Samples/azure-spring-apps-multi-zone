@@ -42,8 +42,8 @@ module "region" {
   cert_path = var.cert_path
   cert_password = var.cert_password
 
-  config_server_git_setting = each.value.config_server_git_setting
-  git_repo_password = var.git_repo_passwords == null ? "" : var.git_repo_password
+  config_server_git_setting = var.region.config_server_git_setting
+  git_repo_password = var.git_repo_password
   apps = var.apps
   environment_variables = var.environment_variables
 }
