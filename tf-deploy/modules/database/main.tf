@@ -21,6 +21,10 @@ resource "azurerm_mysql_flexible_server" "mysql_server" {
   delegated_subnet_id    = var.db_subnet_id
   private_dns_zone_id    = azurerm_private_dns_zone.private_dns_zone.id
 
+  high_availability {
+    mode = "ZoneRedundant"
+  }
+
   depends_on = [azurerm_private_dns_zone_virtual_network_link.private_dns_zone_link]
 }
 
