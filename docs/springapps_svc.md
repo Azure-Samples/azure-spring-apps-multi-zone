@@ -4,6 +4,8 @@
 
 The Spring Apps module creates your Azure Spring Apps instance inside of the virtual network. It also configures the config server backend for your spring apps instance.
 
+This is also where you define you want to use multiple zones for your Spring Apps instance.
+
 ```terraform
 resource "azurerm_spring_cloud_service" "asa" {
   resource_group_name = var.resource_group
@@ -15,7 +17,8 @@ resource "azurerm_spring_cloud_service" "asa" {
   }
   sku_name = "S0"
   location = var.location
-
+  zone_redundant = true
+  
   config_server_git_setting {
     uri          = var.git_repo_uri
     label        = var.git_repo_branch

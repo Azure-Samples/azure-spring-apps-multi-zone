@@ -13,7 +13,7 @@ This project framework provides the following features:
 - Multi-zone Spring Apps deployment with VNet integration
 - Proper reverse proxy configuration for Application Gateway with a custom domain
 - Integration with Key Vault
-- Integration with a MySQL database
+- Integration with a MySQL Flexible database
 
 ## Getting Started
 
@@ -60,6 +60,6 @@ We are working on improving this sample. The ideas we have on improving:
 
 ## Resources
 
-- [Azure Architecture Center: Multi-region Azure Spring Apps reference architecture(coming up)](article coming up)
+- [Azure Architecture Center: Multi-zone Azure Spring Apps reference architecture(coming up)](article coming up)
 - [Preserve the original HTTP host name between a reverse proxy and its back-end web application](https://learn.microsoft.com/azure/architecture/best-practices/host-name-preservation)
-- A similar automated setup in multiple regions can be found in the [Azure Spring Apps multi region reference architecture](https://github.com/vermegi/azure-spring-apps-multi-region) GitHub repository with more info in the [Deploy Azure Spring Apps to multiple regions](https://learn.microsoft.com/azure/architecture/reference-architectures/microservices/spring-apps-multi-region) architecture center article.
+- A similar automated setup in multiple regions can be found in the [Azure Spring Apps multi region reference architecture](https://github.com/Azure-Samples/azure-spring-apps-multi-region) GitHub repository with more info in the [Deploy Azure Spring Apps to multiple regions](https://learn.microsoft.com/azure/architecture/reference-architectures/microservices/spring-apps-multi-region) architecture center article.

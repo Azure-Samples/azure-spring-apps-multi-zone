@@ -2,7 +2,7 @@
 
 ## Public IP
 
-An Application Gateway needs a public IP address. This is created first.
+An Application Gateway needs a public IP address. This is created first. It is also created in all 3 availability zones.
 
 ```terraform
 resource "azurerm_public_ip" "appgw-pip" {
@@ -12,6 +12,7 @@ resource "azurerm_public_ip" "appgw-pip" {
   allocation_method   = "Static"
   sku = "Standard"
   domain_name_label = var.dns_label
+  zones = ["1", "2", "3"]
 }
 ```
 
@@ -38,6 +39,7 @@ Depending on the usage of a certificate issued by a certificate authority or the
 
 The Application Gateway gets created with the below settings (omitting some of the config for clarity):
 
+- `zones`: The application gateway will be deployed in all 3 availability zones.
 - `sku`: We use the `WAF_v2` sku to be able to WAF enable the Application Gateway. Since we are also using Azure Front Door, the WAF could also be enabled there.
 - `frontend_port`: Both 80 and 443 get configured
 - `backend_address_pool`: This will be the FQDN name of the Spring Apps service. This is the DNS name as it is configured in the private DNS zone on the network.
@@ -53,6 +55,7 @@ resource "azurerm_application_gateway" "appgw" {
   name                = "${var.app_name}-gw"
   resource_group_name = var.resource_group
   location            = var.location
+  zones = ["1", "2", "3"]
 
   sku {
     name     = "WAF_v2"
@@ -157,8 +160,6 @@ resource "azurerm_application_gateway" "appgw" {
 
 The Application Gateway WAF policy uses the `OWASP 3.1` default rule set.
 
-Additionally there is a custom rule that checks the `X-Azure-FDID` request header. This is to make sure that only calls coming from your specific Azure Front Door instance make it to your backend. All other calls will be blocked. This rule works in combination with a network security group on the subnet of the Application Gateway.
-
 ```terraform
 resource "azurerm_web_application_firewall_policy" "waf_policy" {
   name                = "openlab-wafpolicy"
@@ -175,25 +176,6 @@ resource "azurerm_web_application_firewall_policy" "waf_policy" {
       type    = "OWASP"
       version = "3.1"
     }
-  }
-
-  custom_rules {
-    name      = "onlyMyAFD"
-    priority  = 2
-    rule_type = "MatchRule"
-
-    match_conditions {
-      match_variables {
-        variable_name = "RequestHeaders"
-        selector      = "X-Azure-FDID"
-      }
-
-      operator           = "Equal"
-      negation_condition = true
-      match_values       = [var.afd_fdid]
-    }
-
-    action = "Block"
   }
 }
 ```

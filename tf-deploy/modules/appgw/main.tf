@@ -1,4 +1,3 @@
-#gittedomain-java-openlab.com
 resource "azurerm_public_ip" "appgw-pip" {
   name                = "app-gw-openlab-public-ip"
   resource_group_name = var.resource_group

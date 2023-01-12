@@ -8,8 +8,8 @@ To install this sample in your subscription for test environments:
 ## 1. Clone this repo
 
 ```bash
-git clone https://github.com/Azure-Samples/azure-spring-apps-multi-region.git
-cd azure-spring-apps-multi-region
+git clone https://github.com/Azure-Samples/azure-spring-apps-multi-zone.git
+cd azure-spring-apps-multi-zone
 ```
 
 ## 2. Review the tfvars file
@@ -34,7 +34,7 @@ terraform apply -auto-approve plan.tfplan
 
 ## 5. Test your setup
 
-You can test your setup by going to your app through your Application Gateway hostname in the browser. The hostname is part of the Terraform output. You should see the "Hurray~Your app is up and running!" page.
+You can test your setup by going to your app through your Application Gateway IP address in the browser. The IP address is part of the Terraform output. You should see the "Hurray~Your app is up and running!" page.
 
 ## 6. Extra: Deploying the Spring Petclinic application
 
