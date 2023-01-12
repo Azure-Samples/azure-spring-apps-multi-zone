@@ -17,3 +17,7 @@ output "appgw_subnet_id" {
 output "pe_subnet_id" {
   value = azurerm_subnet.pe_subnet.id
 }
+
+output "db_subnet_id" {
+  value = azurerm_subnet.db_subnet.id
+}

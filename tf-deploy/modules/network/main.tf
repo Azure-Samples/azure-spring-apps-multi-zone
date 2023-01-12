@@ -34,6 +34,23 @@ resource "azurerm_subnet" "pe_subnet" {
   private_endpoint_network_policies_enabled = true
 }
 
+resource "azurerm_subnet" "db_subnet" {
+  resource_group_name = var.resource_group
+  virtual_network_name = azurerm_virtual_network.vnet.name
+  address_prefixes = var.db_subnet_address
+  name = "database-subnet"
+  service_endpoints    = ["Microsoft.Storage"]
+  delegation {
+    name = "fs"
+    service_delegation {
+      name = "Microsoft.DBforMySQL/flexibleServers"
+      actions = [
+        "Microsoft.Network/virtualNetworks/subnets/join/action",
+      ]
+    }
+  }
+}
+
 resource "azurerm_role_assignment" "asa_vnet_role_assignment" {
   scope = azurerm_virtual_network.vnet.id
   role_definition_name = "Owner"

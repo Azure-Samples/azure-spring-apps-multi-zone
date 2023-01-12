@@ -35,7 +35,7 @@ module "database" {
   location = var.location
   admin_username = "myadmin"
   database_name = "db"
-  pe_subnet_id = module.vnet.pe_subnet_id
+  db_subnet_id = module.vnet.db_subnet_id
   virtual_network_id = module.vnet.vnet_id
 }
 

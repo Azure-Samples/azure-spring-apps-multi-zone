@@ -34,3 +34,8 @@ variable "pe_subnet_address" {
   type = list(string)
   default = ["10.1.3.0/24"]
 }
+
+variable "db_subnet_address" {
+  type = list(string)
+  default = ["10.1.4.0/24"]
+}

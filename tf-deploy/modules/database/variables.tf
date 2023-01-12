@@ -18,7 +18,7 @@ variable "database_name" {
   type = string
 }
 
-variable "pe_subnet_id" {
+variable "db_subnet_id" {
   type = string
 }
 
