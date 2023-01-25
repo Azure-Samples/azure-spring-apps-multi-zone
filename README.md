@@ -56,7 +56,6 @@ We are working on improving this sample. The ideas we have on improving:
 
 - Create Bicep templates for the same setup (in progress)
 - Make the database interchangeable for other types of databases (Cosmos DB as a first candidate)
-- Currently the apps in Azure Spring Apps are based on the Spring Petclinic sample, these apps should be better configurable.
 
 ## Resources
 
