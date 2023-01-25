@@ -79,7 +79,7 @@ module "appgw" {
   source = "../appgw"
   resource_group = azurerm_resource_group.rg.name
   location = var.location
-  dns_label = split(".", var.dns_name)[1] #"${var.dns_prefix}-${var.dns_postfix}"
+  dns_label = split(".", var.dns_name)[1]
   dns_name = var.dns_name
   app_name = local.app_name
   appgw_subnet_id = module.vnet.appgw_subnet_id
