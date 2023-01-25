@@ -36,34 +36,6 @@ resource "azurerm_mysql_flexible_database" "database" {
   collation           = "utf8_unicode_ci"
 }
 
-# This rule is to enable the 'Allow access to Azure services' checkbox
-# resource "azurerm_mysql_firewall_rule" "database" {
-#   name                = "allow_azure"
-#   resource_group_name = var.resource_group
-#   server_name         = azurerm_mysql_server.mysql_server.name
-#   start_ip_address    = "0.0.0.0"
-#   end_ip_address      = "0.0.0.0"
-# }
-
-# resource "azurerm_private_endpoint" "mysql_pe" {
-#   name                = "${var.database_name}-pe"
-#   location            = var.location
-#   resource_group_name = var.resource_group
-#   subnet_id           = var.pe_subnet_id
-
-#   private_service_connection {
-#     name                           = "${var.database_name}-privateserviceconnection"
-#     private_connection_resource_id = azurerm_mysql_server.mysql_server.id
-#     subresource_names              = [ "mysqlServer" ]
-#     is_manual_connection           = false
-#   }
- 
-#   private_dns_zone_group {
-#     name                 = "private-dns-zone-group"
-#     private_dns_zone_ids = [azurerm_private_dns_zone.private_dns_zone.id]
-#   }
-# }
-
 resource "azurerm_private_dns_zone" "private_dns_zone" {
   name                = "private.mysql.database.azure.com"
   resource_group_name = var.resource_group
