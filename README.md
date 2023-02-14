@@ -1,6 +1,6 @@
 # Azure Spring Apps multi zone reference architecture
 
-This sample contains a Terraform template that deploys a working sample of the Azure architecture center reference architecture: [Multi zone Azure Spring Apps reference architecture (coming up)](coming up). The reference architecture and sample show how to run an Azure Spring Apps workload in a multi zone configuration. This allows for higher availability of the workload.
+This sample contains a Terraform template that deploys a working sample of the Azure architecture center reference architecture: [Multi zone Azure Spring Apps reference architecture](https://learn.microsoft.com/azure/architecture/reference-architectures/microservices/spring-apps-multi-zone). The reference architecture and sample show how to run an Azure Spring Apps workload in a multi zone configuration. This allows for higher availability of the workload.
 
 ![Multi zone Spring Apps architecture diagram](./images/multi-zone-spring-apps-reference-architecture.png)
 
@@ -59,6 +59,6 @@ We are working on improving this sample. The ideas we have on improving:
 
 ## Resources
 
-- [Azure Architecture Center: Multi-zone Azure Spring Apps reference architecture(coming up)](article coming up)
+- [Azure Architecture Center: Multi-zone Azure Spring Apps reference architecture](https://learn.microsoft.com/azure/architecture/reference-architectures/microservices/spring-apps-multi-zone)
 - [Preserve the original HTTP host name between a reverse proxy and its back-end web application](https://learn.microsoft.com/azure/architecture/best-practices/host-name-preservation)
 - A similar automated setup in multiple regions can be found in the [Azure Spring Apps multi region reference architecture](https://github.com/Azure-Samples/azure-spring-apps-multi-region) GitHub repository with more info in the [Deploy Azure Spring Apps to multiple regions](https://learn.microsoft.com/azure/architecture/reference-architectures/microservices/spring-apps-multi-region) architecture center article.
