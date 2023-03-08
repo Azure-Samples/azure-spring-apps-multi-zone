@@ -2,7 +2,7 @@
 
 This sample contains a Terraform template that deploys a working sample of the Azure architecture center reference architecture: [Multi zone Azure Spring Apps reference architecture](https://learn.microsoft.com/azure/architecture/reference-architectures/microservices/spring-apps-multi-zone). The reference architecture and sample show how to run an Azure Spring Apps workload in a multi zone configuration. This allows for higher availability of the workload.
 
-![Multi zone Spring Apps architecture diagram](./images/multi-zone-spring-apps-reference-architecture.png)
+![Multi zone Spring Apps architecture diagram](./images/zone-redundant-spring-apps-reference-architecture.png)
 
 This sample also applies a proper reverse proxy configuration with [host name preservation](https://learn.microsoft.com/azure/architecture/best-practices/host-name-preservation). This means that cookies and AAD redirects will be working as expected.
 
